@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
       <NextTopLoader />
       <AuthDialogProvider>
-      <SessionProviderComp>
+      <SessionProviderComp session={undefined}>
         <ThemeProvider
           attribute="class"
           enableSystem={true}
