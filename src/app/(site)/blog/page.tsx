@@ -11,7 +11,7 @@ const BlogPage = () => {
     <>
       <HeroSub
         title='Blog'
-        description='Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive understanding of the latest trends.'
+        description='Read articles and resources about career development, mentorship insights, industry trends, and tips to advance your professional journey.'
         breadcrumbLinks={breadcrumbLinks}
       />
       <BlogList />

@@ -4,7 +4,8 @@ import React from "react";
 import HeroSub from "@/components/SharedComponent/HeroSub";
 import { Metadata } from "next";
 export const metadata: Metadata = {
-    title: "Contact | Venus",
+    title: "Contact Us | MentorPace - Get in Touch",
+    description: "Contact MentorPace for career guidance inquiries. Reach out via email, phone, or fill out our contact form. We're here to help you on your career journey.",
 };
 
 const page = () => {
@@ -16,7 +17,7 @@ const page = () => {
     <>
       <HeroSub
         title="Contact Us"
-        description="Discover a wealth of insightful materials meticulously crafted to provide you with a comprehensive understanding of the latest trends."
+        description="Have questions about our mentorship services? Get in touch with our team. We're here to help you find the right mentor and start your career journey."
         breadcrumbLinks={breadcrumbLinks}
       />
       <ContactInfo />

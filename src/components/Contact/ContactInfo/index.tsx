@@ -14,18 +14,17 @@ const ContactInfo = () => {
               <div className='flex md:flex-col sm:flex-row flex-col md:items-start sm:items-center items-start h-full justify-between'>
                 <div>
                   <span className='text-midnight_text dark:text-white text-xl font-bold'>
-                    Email US
+                    Email Us
                   </span>
                   <p className='text-DeepOcean font-normal text-lg max-w-80 pt-3 pb-7 dark:text-white/50'>
-                    Please feel free to drop us a line. We will respond as soon
-                    as possible.
+                    Have questions about our mentorship services? Drop us a line and we'll respond as soon as possible.
                   </p>
                 </div>
                 <div>
                   <Link
-                    href='#'
+                    href='mailto:contact@mentorpace.com'
                     className='text-primary text-base font-medium flex items-center gap-3 group hover:text-midnight_text dark:hover:text-white'>
-                    Leave a message
+                    Send Email
                     <svg
                       width='23'
                       height='17'
@@ -46,18 +45,17 @@ const ContactInfo = () => {
               <div className='flex md:flex-col sm:flex-row flex-col md:items-start sm:items-center items-start h-full justify-between'>
                 <div>
                   <span className='text-midnight_text dark:text-white text-xl font-bold'>
-                    Careers
+                    Book a Session
                   </span>
                   <p className='text-DeepOcean font-normal text-lg max-w-80 pt-3 pb-7 dark:text-white/50'>
-                    Sit ac ipsum leo lorem magna nunc mattis maecenas non
-                    vestibulum
+                    Ready to start your career journey? Book a mentorship session with one of our experienced mentors.
                   </p>
                 </div>
                 <div>
                   <Link
-                    href='#'
+                    href='/contact'
                     className='text-primary text-base font-medium flex items-center gap-3 group hover:text-midnight_text dark:hover:text-white'>
-                    Send an application
+                    Schedule Now
                     <svg
                       width='23'
                       height='17'
@@ -74,12 +72,13 @@ const ContactInfo = () => {
           </div>
           <div className='md:pt-32 pt-11 md:pb-28 pb-8'>
             <iframe
-              src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d938779.7831767448!2d71.05098621661072!3d23.20271516446136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e82dd003ff749%3A0x359e803f537cea25!2sGANESH%20GLORY%2C%20Gota%2C%20Ahmedabad%2C%20Gujarat%20382481!5e0!3m2!1sen!2sin!4v1715676641521!5m2!1sen!2sin'
+              src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3499.8!2d77.1234!3d28.7045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1b5c5c5c5c5c%3A0x5c5c5c5c5c5c5c5c!2sSector%209%2C%20Rohini%2C%20Delhi%20110085!5e0!3m2!1sen!2sin!4v1715676641521!5m2!1sen!2sin'
               width='1114'
               height='477'
               loading='lazy'
               referrerPolicy='no-referrer-when-downgrade'
-              className='rounded-lg w-full'></iframe>
+              className='rounded-lg w-full'
+              title='MentorPace Location - Sector 9 Rohini Delhi'></iframe>
           </div>
         </div>
         <div className='border-b border-solid border-border dark:border-dark_border'></div>

@@ -35,23 +35,23 @@ const Footer: FC = () => {
               <div className='pb-5 block'>
                 <p className='text-base font-bold text-white'>Phone</p>
                 <Link
-                  href='tel:9650043433'
+                  href='tel:+919650043433'
                   className='text-2xl sm:text-2xl text-white/50 hover:text-white break-words'>
-                  9650043433
+                  +91 96500 43433
                 </Link>
               </div>
               <div className='block'>
                 <p className='text-base font-bold text-white'>Email</p>
                 <Link
-                  href='mailto:sanchitkhthpalia@gmail.com'
+                  href='mailto:contact@mentorpace.com'
                   className='text-2xl sm:text-2xl text-white/50 hover:text-white break-words break-all'>
-                  sanchitkhthpalia@gmail.com
+                  contact@mentorpace.com
                 </Link>
               </div>
               <div>
                 <ul className='flex items-center gap-3 mt-[1.875rem]'>
                   <li className='group'>
-                    <Link href='#' className=''>
+                    <Link href='https://facebook.com/mentorpace' target='_blank' rel='noopener noreferrer' className='' aria-label='Facebook'>
                       <svg
                         width='25'
                         height='25'
@@ -71,7 +71,7 @@ const Footer: FC = () => {
                     </Link>
                   </li>
                   <li className='group'>
-                    <Link href='#'>
+                    <Link href='https://twitter.com/mentorpace' target='_blank' rel='noopener noreferrer' aria-label='Twitter'>
                       <svg
                         width='23'
                         height='23'
@@ -91,7 +91,7 @@ const Footer: FC = () => {
                     </Link>
                   </li>
                   <li className='group'>
-                    <Link href='#'>
+                    <Link href='https://www.linkedin.com/company/mentorpace' target='_blank' rel='noopener noreferrer' aria-label='LinkedIn'>
                       <svg
                         width='22'
                         height='23'
@@ -120,7 +120,7 @@ const Footer: FC = () => {
                 Subscribe newsletter
               </span>
               <p className='text-MistyBlue text-base pb-7 text-white/50'>
-                To be updated with all the latest trends and product
+                Stay updated with career tips, mentorship insights, and industry trends
               </p>
               <form className='newsletter-form flex rounded-lg sm:w-full w-3/4 sm:mx-0 mx-auto'>
                 <input
@@ -142,13 +142,23 @@ const Footer: FC = () => {
         <div>
           <ul className='flex justify-center mb-4 items-center sm:gap-7 gap-3'>
             <li className='text-base text-white/50'>
-              <Link href='/#about' className='hover:text-primary'>
+              <Link href='/about' className='hover:text-primary'>
                 About
               </Link>
             </li>
             <li className='text-base text-white/50'>
-              <Link href='/#services' className='hover:text-primary'>
+              <Link href='/services' className='hover:text-primary'>
                 Services
+              </Link>
+            </li>
+            <li className='text-base text-white/50'>
+              <Link href='/how-it-works' className='hover:text-primary'>
+                How It Works
+              </Link>
+            </li>
+            <li className='text-base text-white/50'>
+              <Link href='/blog' className='hover:text-primary'>
+                Blog
               </Link>
             </li>
             <li className='text-base text-white/50'>

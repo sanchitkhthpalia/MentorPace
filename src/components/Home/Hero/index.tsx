@@ -27,7 +27,7 @@ const Hero = () => {
           <a
             href='#services'
             className='py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300 px-8'>
-            Explore More
+            Get Started
           </a>
           <div className='flex items-center mt-12 gap-4'>
             <div className='flex items-center'>
@@ -59,10 +59,10 @@ const Hero = () => {
             <div>
               <p className='text-sm font-normal text-grey max-w-56'>
                 Need help?{' '}
-                <Link href='#' className='text-primary hover:text-blue-700'>
-                  Contact our experts
+                <Link href='/contact' className='text-primary hover:text-blue-700'>
+                  Contact our mentors
                 </Link>{' '}
-                Tell us about your project
+                Get personalized career guidance
               </p>
             </div>
           </div>

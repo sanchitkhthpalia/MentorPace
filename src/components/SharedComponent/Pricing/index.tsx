@@ -19,7 +19,7 @@ const Pricing = () => {
             <h3 className='text-2xl font-bold text-midnight_text dark:text-white mb-2'>Career Starter Plan</h3>
             <div className='text-3xl font-extrabold text-primary mb-4'>₹1,499</div>
             <ul className='list-disc ml-5 space-y-2 text-midnight_text dark:text-white/80'>
-              <li>Upto 30-Minute 1:1 Career Councelling Sessions</li>
+              <li>Up to 30-Minute 1:1 Career Counseling Sessions</li>
               <li>Email Summary of Key Takeaways</li>
               <li>Quick Action Plan for Next Step</li>
               <li>Personalized Career Assessment</li>
@@ -36,12 +36,12 @@ const Pricing = () => {
             <h3 className='text-2xl font-bold text-midnight_text dark:text-white mb-2'>Career Boost Blueprint Plan</h3>
             <div className='text-3xl font-extrabold text-primary mb-4'>₹1,999</div>
             <ul className='list-disc ml-5 space-y-2 text-midnight_text dark:text-white/80'>
-              <li>Upto 60-Minute 1:1 Careeer Councelling Session</li>
-              <li>7 Day Followup Session</li>
-              <li>Linkedin Profile & Resume Review</li>
+              <li>Up to 60-Minute 1:1 Career Counseling Session</li>
+              <li>7-Day Follow-up Session</li>
+              <li>LinkedIn Profile & Resume Review</li>
               <li>Skill-Gap Analysis</li>
               <li>Actionable Roadmap</li>
-              <li>Resource Recomendation</li>
+              <li>Resource Recommendations</li>
               <li>Domain Specific Mentor</li>
             </ul>
             <div className='pt-6'>

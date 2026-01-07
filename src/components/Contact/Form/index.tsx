@@ -11,7 +11,7 @@ const ContactForm = () => {
           <div className='grid md:grid-cols-12 grid-cols-1 gap-8'>
             <div className='col-span-6'>
               <h2 className='max-w-72 text-[40px] leading-tight font-bold mb-9 text-midnight_text dark:text-white'>
-                Get Online Consultation
+                Book a Mentorship Session
               </h2>
               <form className='flex flex-wrap w-full m-auto justify-between'>
                 <div className='sm:flex gap-3 w-full'>
@@ -54,18 +54,16 @@ const ContactForm = () => {
                     <label
                       htmlFor='Specialist'
                       className='pb-3 inline-block text-base'>
-                      Specialist*
+                      Domain/Field*
                     </label>
                     <select className='w-full text-base px-4 py-2.5 rounded-lg border-border dark:text-white border-solid dark:bg-darkmode border transition-all duration-500 focus:border-primary dark:focus:border-primary dark:border-dark_border focus:border-solid focus:outline-0'>
-                      <option value=''>Choose a specialist</option>
-                      <option value='Baking &amp; Pastry'>
-                        Choose a specialist
-                      </option>
-                      <option value='Exotic Cuisine'>Exotic Cuisine</option>
-                      <option value='French Desserts'>French Desserts</option>
-                      <option value='Seafood &amp; Wine'>
-                        Choose a specialist
-                      </option>
+                      <option value=''>Choose a domain</option>
+                      <option value='Software Engineering'>Software Engineering</option>
+                      <option value='MBA'>MBA</option>
+                      <option value='App Development'>App Development</option>
+                      <option value='Product Management'>Product Management</option>
+                      <option value='Creative Design'>Creative Design</option>
+                      <option value='Human Resource'>Human Resource</option>
                     </select>
                   </div>
                 </div>
@@ -98,7 +96,7 @@ const ContactForm = () => {
                     href='#'
                     className='bg-primary rounded-lg text-white py-4 px-8 mt-4 inline-block hover:bg-blue-700'
                     type='submit'>
-                    Make an appointment
+                    Book a Session
                   </Link>
                 </div>
               </form>
