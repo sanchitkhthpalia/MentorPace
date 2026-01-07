@@ -116,7 +116,7 @@ const Contactform = () => {
                 <div className='w-full'>
                   <textarea
                     className='text-midnight_text h-[9.375rem] w-full text-base transition-[0.5s] bg-transparent dark:border-dark_border dark:text-white px-[0.9375rem] py-[0.830rem] border! border-border border-solid! focus:border-primary dark:focus:border-primary placeholder:text-grey rounded-lg focus-visible:outline-0'
-                    placeholder='Tell us about your career goals and what you'd like to achieve'></textarea>
+                    placeholder="Tell us about your career goals and what you'd like to achieve"></textarea>
                 </div>
                 <div className='flex'>
                   <input
