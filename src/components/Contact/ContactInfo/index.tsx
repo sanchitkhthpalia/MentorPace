@@ -22,7 +22,7 @@ const ContactInfo = () => {
                 </div>
                 <div>
                   <Link
-                    href='mailto:contact@mentorpace.com'
+                    href='mailto:team@mentorpace.com'
                     className='text-primary text-base font-medium flex items-center gap-3 group hover:text-midnight_text dark:hover:text-white'>
                     Send Email
                     <svg

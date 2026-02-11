@@ -17,15 +17,9 @@ const Contactform = () => {
             </h2>
             <div className='grid grid-cols-1 md:grid-cols-6 pb-12 border-b border-dark_border '>
               <div className='col-span-6 md:col-span-3'>
-                <span className='text-white/50 text-lg'>Phone</span>
-                <p className='bg-transparent border-0 text-white text-base sm:text-lg break-words'>
-                  +91 96500 43433
-                </p>
-              </div>
-              <div className='col-span-6 md:col-span-3'>
                 <span className='text-white/50 text-lg'>Email</span>
                 <p className='bg-transparent border-0 text-white text-base sm:text-lg break-all'>
-                  contact@mentorpace.com
+                  team@mentorpace.com
                 </p>
               </div>
               <div className='col-span-6 pt-8'>
@@ -128,14 +122,14 @@ const Contactform = () => {
                   />
                   <div className='text-grey dark:text-white/50'>
                     I have read and acknowledge the{' '}
-                    <p className='text-primary inline cursor-pointer'>
+                    <a href='/terms-and-conditions' className='text-accent inline cursor-pointer hover:underline'>
                       Terms and Conditions{' '}
-                    </p>
+                    </a>
                   </div>
                 </div>
                 <div className='w-full'>
                   <button
-                    className='w-full bg-primary hover:bg-blue-700 text-white py-3 rounded-lg'
+                    className='w-full bg-accent hover:bg-accent/90 text-white py-3 rounded-lg transition-all duration-300'
                     type='submit'>
                     Get Started
                   </button>

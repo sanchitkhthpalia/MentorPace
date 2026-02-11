@@ -1,54 +1,74 @@
 import React from 'react'
-import Link from 'next/link'
 import { Servicebox } from '@/app/api/data'
 import Image from 'next/image'
 
 const Services = () => {
   return (
-    <section className='bg-section dark:bg-darklight' id='services'>
-      <div className='container mx-auto max-w-6xl px-4'>
-        <div
-          className='flex gap-2 items-center justify-center'
-          data-aos='fade-up'
-          data-aos-delay='200'
-          data-aos-duration='1000'>
-          <span className='w-3 h-3 rounded-full bg-success'></span>
-          <span className='font-medium text-midnight_text text-sm dark:text-white/50'>
-            Featured Domains
-          </span>
+    <section className='bg-background transition-colors' id='services'>
+      <div className='container mx-auto max-w-7xl px-4'>
+        <div className='text-center max-w-3xl mx-auto space-y-4 mb-16'>
+          <div
+            className='inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20'
+            data-aos='fade-up'
+            data-aos-duration='1000'
+          >
+            <span className='w-2 h-2 rounded-full bg-accent animate-pulse'></span>
+            <span className='font-bold text-accent text-xs uppercase tracking-widest'>
+              Featured Domains
+            </span>
+          </div>
+
+          <h2
+            className='text-primary text-3xl md:text-5xl font-extrabold leading-tight'
+            data-aos='fade-up'
+            data-aos-duration='1000'
+            data-aos-delay='100'
+          >
+            Connect With Expert Mentors
+          </h2>
+
+          <p
+            className='text-secondary text-lg font-medium'
+            data-aos='fade-up'
+            data-aos-duration='1000'
+            data-aos-delay='200'
+          >
+            MentorPace bridges the gap between ambitious learners and industry veterans for high-impact 1:1 career guidance.
+          </p>
         </div>
-        <h2
-          className='sm:text-4xl text-[28px] leading-tight font-bold text-midnight_text md:text-center text-start pt-7 pb-4 md:w-4/6 w-full m-auto dark:text-white'
-          data-aos='fade-up'
-          data-aos-delay='200'
-          data-aos-duration='1000'>
-          We Connect You With Experienced Mentors
-        </h2>
-        <p className='text-center text-grey dark:text-white/70 text-base font-semibold pb-16 md:w-4/6 w-full m-auto'>
-          MentorPace connects students, graduates, and professionals with experienced mentors for personalized career counseling.
-        </p>
-        <div className='grid md:grid-cols-12 sm:grid-cols-8 grid-cols-1 gap-7'>
+
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
           {Servicebox.map((item, index) => (
             <div
               key={index}
               data-aos='fade-up'
-              data-aos-delay={`${index * 200}`}
+              data-aos-delay={`${index * 150}`}
               data-aos-duration='1000'
-              data-aos-offset='300'
-              className='col-span-4 bg-white flex flex-col justify-between items-center text-center py-14 px-7 shadow-service rounded-md gap-8 dark:bg-darkmode'>
-              <Image
-                src={item.icon}
-                alt='Service Box'
-                width={0}
-                height={0}
-                className='w-10 h-10 bg-no-repeat inline-block bg-contain'
-              />
-              <h3 className='max-w-44 mx-auto text-2xl font-bold'>
+              className='group bg-card p-10 rounded-[2rem] border border-border-default shadow-sm transition-all duration-500 hover:shadow-2xl hover:shadow-accent/5 hover:-translate-y-2 flex flex-col items-center text-center gap-6'
+            >
+              <div className='w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6'>
+                <Image
+                  src={item.icon}
+                  alt={item.title}
+                  width={40}
+                  height={40}
+                  className='w-10 h-10 object-contain'
+                />
+              </div>
+
+              <h3 className='text-primary text-2xl font-bold tracking-tight'>
                 {item.title}
               </h3>
-              <p className='dark:text-white/50 text-base font-normal'>
+
+              <p className='text-secondary text-base leading-relaxed'>
                 {item.description}
               </p>
+
+              <div className='mt-auto pt-6 w-full border-t border-border-default/50'>
+                <span className='text-accent text-sm font-bold uppercase tracking-wider group-hover:underline cursor-pointer'>
+                  Explore Domain →
+                </span>
+              </div>
             </div>
           ))}
         </div>

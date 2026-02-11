@@ -24,15 +24,9 @@ const Location = () => {
               </div>
               <div className='col-span-3'>
                 <Link
-                  href='mailto:contact@mentorpace.com'
+                  href='mailto:team@mentorpace.com'
                   className='sm:text-2xl text-xl text-white font-medium underline'>
-                  contact@mentorpace.com
-                </Link>
-                <Link
-                  href='tel:+919650043433'
-                  className='sm:text-2xl text-xl text-white/80 flex items-center gap-2 hover:text-opacity-100 w-fit'>
-                  <span className='text-white/40!'>Call</span>
-                  +91 96500 43433
+                  team@mentorpace.com
                 </Link>
               </div>
             </div>

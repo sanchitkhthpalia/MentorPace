@@ -6,9 +6,11 @@ import { ThemeProvider } from "next-themes";
 import ScrollToTop from '@/components/ScrollToTop';
 import Aoscompo from "@/utils/aos";
 import NextTopLoader from 'nextjs-toploader';
-import { AuthDialogProvider } from "./context/AuthDialogContext";
+import { AuthProvider } from "@/context/AuthContext";
+
 const inter = Inter({ subsets: ["latin"] });
 
+export const dynamic = 'force-dynamic';
 
 export default function RootLayout({
   children,
@@ -18,21 +20,22 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-      <NextTopLoader />
-      <AuthDialogProvider>
-        <ThemeProvider
-          attribute="class"
-          enableSystem={true}
-          defaultTheme="system"
-        >
-          <Aoscompo>
-            <Header />
-            {children}
-            <Footer />
-          </Aoscompo>
-          <ScrollToTop />
-        </ThemeProvider>
-        </AuthDialogProvider>
+        <NextTopLoader color="#22C55E" />
+        <AuthProvider>
+          <ThemeProvider
+            attribute="class"
+            enableSystem={false}
+            defaultTheme="dark"
+            forcedTheme="dark"
+          >
+            <Aoscompo>
+              <Header />
+              {children}
+              <Footer />
+            </Aoscompo>
+            <ScrollToTop />
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );
