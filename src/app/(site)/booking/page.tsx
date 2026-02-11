@@ -14,6 +14,7 @@ const BookingPage: React.FC = () => {
     const [formData, setFormData] = useState({
         fullName: "",
         email: "",
+        phone: "",
         domain: "",
         description: "",
     });
@@ -36,6 +37,10 @@ const BookingPage: React.FC = () => {
         const newErrors: Record<string, string> = {};
         if (!formData.fullName.trim()) newErrors.fullName = "Full name is required";
         if (!formData.email.trim()) newErrors.email = "Email is required";
+        if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
+        if (!/^\+?[0-9]{10,14}$/.test(formData.phone.trim().replace(/\s/g, ""))) {
+            newErrors.phone = "Enter a valid phone number";
+        }
         if (!formData.domain.trim()) newErrors.domain = "Please select a domain";
         if (!formData.description.trim()) newErrors.description = "Please describe your requirement";
         if (!agreedToTerms) newErrors.terms = "You must agree to the terms & conditions";
@@ -152,6 +157,24 @@ const BookingPage: React.FC = () => {
                                                 />
                                             </div>
                                             <p className="text-[10px] uppercase font-black tracking-widest text-secondary ml-1">Verified Account Email</p>
+                                        </div>
+
+                                        {/* Phone Number */}
+                                        <div className="space-y-2">
+                                            <label className="text-sm font-bold text-primary/80 ml-1">
+                                                Phone Number <span className="text-red-500 font-black">*</span>
+                                            </label>
+                                            <div className="relative group">
+                                                <Icon icon="ph:phone-bold" className="absolute left-4 top-1/2 -translate-y-1/2 text-secondary group-focus-within:text-accent transition-colors" />
+                                                <input
+                                                    type="tel"
+                                                    value={formData.phone}
+                                                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                                    placeholder="+91 98765 43210"
+                                                    className={`w-full bg-background rounded-2xl border ${errors.phone ? 'border-red-400 ring-4 ring-red-400/5' : 'border-border-default group-focus-within:border-accent'} pl-12 pr-4 py-4 text-primary outline-none transition-all group-focus-within:ring-4 group-focus-within:ring-accent/5`}
+                                                />
+                                            </div>
+                                            {errors.phone && <p className="text-red-500 text-xs font-bold ml-1">{errors.phone}</p>}
                                         </div>
 
                                         {/* Domain */}

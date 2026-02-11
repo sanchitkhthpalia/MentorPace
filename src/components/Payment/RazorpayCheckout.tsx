@@ -84,6 +84,7 @@ const RazorpayCheckout: React.FC<RazorpayCheckoutProps> = ({ amount, bookingData
                 prefill: {
                     name: bookingData.fullName,
                     email: bookingData.email,
+                    contact: bookingData.phone,
                 },
                 theme: {
                     color: "#22C55E",
@@ -95,6 +96,7 @@ const RazorpayCheckout: React.FC<RazorpayCheckoutProps> = ({ amount, bookingData
                             userId: user?.uid || "",
                             fullName: bookingData.fullName,
                             email: bookingData.email,
+                            phone: bookingData.phone,
                             domain: bookingData.domain,
                             description: bookingData.description,
                             amount,
