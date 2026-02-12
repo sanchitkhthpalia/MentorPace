@@ -18,23 +18,31 @@ const HowItWorksPage = () => {
   const steps = [
     {
       number: "1",
+      icon: "🎯",
       title: "Choose Your Domain",
-      description: "Select the career domain you want guidance in - Software Engineering, MBA, Product Management, Creative Design, or Human Resource.",
+      description:
+        "Select the career domain you want guidance in - Software Engineering, MBA, Product Management, Creative Design, or Human Resource.",
     },
     {
       number: "2",
+      icon: "🧑‍🏫",
       title: "Select a Mentor",
-      description: "Browse through our experienced mentors, read their profiles, and choose the one that best matches your career goals.",
+      description:
+        "Browse through our experienced mentors, read their profiles, and choose the one that best matches your career goals.",
     },
     {
       number: "3",
+      icon: "📅",
       title: "Book a Session",
-      description: "Choose a convenient date and time for your 1:1 video session. Our platform makes booking effortless and secure.",
+      description:
+        "Choose a convenient date and time for your 1:1 video session. Our platform makes booking effortless and secure.",
     },
     {
       number: "4",
+      icon: "💡",
       title: "Get Personalized Guidance",
-      description: "Attend your session and receive personalized career counseling, actionable roadmaps, and expert advice tailored to your needs.",
+      description:
+        "Attend your session and receive personalized career counseling, actionable roadmaps, and expert advice tailored to your needs.",
     },
   ];
 
@@ -54,12 +62,16 @@ const HowItWorksPage = () => {
                 data-aos="fade-up"
                 data-aos-delay={`${index * 200}`}
                 data-aos-duration="1000"
-                className="bg-section dark:bg-darkmode rounded-lg p-8 shadow-service">
+                className="bg-section dark:bg-darkmode rounded-lg p-8 shadow-service"
+              >
                 <div className="flex items-start gap-6">
-                  <div className="flex-shrink-0 w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold">
-                    {step.number}
+                  <div className="flex-shrink-0 w-16 h-16 rounded-full bg-white dark:bg-darklight flex items-center justify-center shadow-md text-2xl">
+                    <span className="text-accent">{step.icon}</span>
                   </div>
                   <div>
+                    <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-accent/10 text-accent font-semibold text-sm mb-2">
+                      {step.number}
+                    </div>
                     <h3 className="text-2xl font-bold text-midnight_text dark:text-white mb-3">
                       {step.title}
                     </h3>
@@ -84,8 +96,9 @@ const HowItWorksPage = () => {
               Book your first session today and take the first step toward achieving your career goals.
             </p>
             <a
-              href="/contact"
-              className="inline-block py-3 bg-primary text-white rounded-md hover:bg-blue-700 transition duration-300 px-8">
+              href="/booking"
+              className="inline-flex items-center justify-center px-8 py-3 bg-accent text-white rounded-full font-semibold hover:bg-accent/90 transition-colors duration-200 shadow-md shadow-accent/20"
+            >
               Book a Session
             </a>
           </div>

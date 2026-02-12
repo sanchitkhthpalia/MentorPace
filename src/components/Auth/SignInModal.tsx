@@ -51,7 +51,7 @@ const SignInModal: React.FC<SignInModalProps> = ({ onClose, onSwitchToSignUp }) 
     };
 
     return (
-        <div className="fixed inset-0 w-full h-full bg-black/60 backdrop-blur-sm flex items-center justify-center z-120 p-4 transition-all duration-300">
+        <div className="fixed inset-0 w-full h-full bg-black/60 backdrop-blur-sm flex items-center justify-center z-[1200] p-4 transition-all duration-300">
             <div className="relative mx-auto w-full max-w-md overflow-hidden rounded-3xl bg-white px-8 py-10 dark:bg-darklight shadow-2xl animate-modal-in">
                 <button
                     onClick={onClose}

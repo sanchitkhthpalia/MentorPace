@@ -3,8 +3,6 @@
 import React, { useState } from "react";
 import ProtectedRoute from "@/components/Auth/ProtectedRoute";
 import { useAuth } from "@/context/AuthContext";
-import { db } from "@/lib/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { Icon } from "@iconify/react";
 
 const SupportPage: React.FC = () => {
@@ -16,7 +14,6 @@ const SupportPage: React.FC = () => {
     });
     const [loading, setLoading] = useState(false);
     const [submitted, setSubmitted] = useState(false);
-    const [ticketId, setTicketId] = useState("");
     const [error, setError] = useState("");
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -30,18 +27,38 @@ const SupportPage: React.FC = () => {
         setError("");
 
         try {
-            const docRef = await addDoc(collection(db, "supportTickets"), {
-                userId: user?.uid || "",
-                email: user?.email || "",
-                displayName: user?.displayName || "",
+            const payload = {
+                access_key: "5b78b222-617f-482b-9c9f-0d95373e2620",
+                name: user?.displayName || user?.email || "MentorPace User",
+                email: user?.email || "no-reply@mentorpace.com",
                 subject: formData.subject.trim(),
                 category: formData.category,
-                description: formData.description.trim(),
-                status: "open",
-                createdAt: serverTimestamp(),
+                message: formData.description.trim(),
+                // extra meta info
+                userId: user?.uid || "",
+                source: "MentorPace Support Page",
+            };
+
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify(payload),
             });
 
-            setTicketId(docRef.id);
+            const data = await response.json();
+
+            if (!response.ok || !data.success) {
+                console.error("Web3Forms error:", data);
+                setError(
+                    data.message ||
+                    "Failed to submit ticket. Please try again shortly."
+                );
+                return;
+            }
+
             setSubmitted(true);
         } catch (err) {
             console.error("Error submitting ticket:", err);
@@ -54,7 +71,6 @@ const SupportPage: React.FC = () => {
     const handleNewTicket = () => {
         setFormData({ subject: "", category: "", description: "" });
         setSubmitted(false);
-        setTicketId("");
         setError("");
     };
 
@@ -94,10 +110,10 @@ const SupportPage: React.FC = () => {
                                 </p>
 
                                 <div className="bg-background/50 border border-border-default rounded-2xl p-6 mb-10">
-                                    <p className="text-[10px] uppercase font-black tracking-widest text-secondary mb-2">Ticket Reference ID</p>
-                                    <code className="text-xl font-black text-accent block tracking-wider">
-                                        {ticketId}
-                                    </code>
+                                    <p className="text-sm text-secondary">
+                                        Your ticket has been logged via our support system. Please check your email
+                                        inbox for a confirmation from Web3Forms.
+                                    </p>
                                 </div>
 
                                 <div className="space-y-4">

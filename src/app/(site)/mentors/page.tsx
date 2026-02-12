@@ -103,8 +103,8 @@ const MentorsPage = () => {
                   {mentor.description}
                 </p>
                 <a
-                  href="/contact"
-                  className="mt-4 inline-block py-2 px-6 bg-primary text-white rounded-md hover:bg-blue-700 transition duration-300 text-sm">
+                  href="/booking"
+                  className="mt-6 inline-flex items-center justify-center px-6 py-3 bg-accent text-white text-sm font-semibold rounded-full shadow-md shadow-accent/20 hover:bg-accent/90 transition-colors duration-200">
                   Book Session
                 </a>
               </div>
