@@ -4,9 +4,14 @@ import Razorpay from "razorpay";
 export const dynamic = 'force-dynamic';
 
 const getRazorpay = () => {
+    const keyId = process.env.RAZORPAY_KEY_ID || process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
+    const keySecret = process.env.RAZORPAY_KEY_SECRET;
+    if (!keyId || !keySecret) {
+        throw new Error("Missing Razorpay credentials. Set RAZORPAY_KEY_ID (or NEXT_PUBLIC_RAZORPAY_KEY_ID) and RAZORPAY_KEY_SECRET in .env.local");
+    }
     return new Razorpay({
-        key_id: process.env.RAZORPAY_KEY_ID || 'placeholder',
-        key_secret: process.env.RAZORPAY_KEY_SECRET || 'placeholder',
+        key_id: keyId,
+        key_secret: keySecret,
     });
 };
 
