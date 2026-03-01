@@ -6,10 +6,26 @@ import { useAuth } from "@/context/AuthContext";
 import RazorpayCheckout from "@/components/Payment/RazorpayCheckout";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-const MENTORSHIP_AMOUNT = 999; // Amount in INR
+const BookingPageContent: React.FC = () => {
+    const searchParams = useSearchParams();
+    const queryPlan = searchParams.get("plan");
 
-const BookingPage: React.FC = () => {
+    const [selectedPlan, setSelectedPlan] = useState<"starter" | "boost">(
+        queryPlan === "boost" ? "boost" : "starter"
+    );
+
+    let amount = 1499;
+    let planHeader = "Career Starter Plan";
+    let planDesc = "Up to 30-Minute 1:1 Career Counseling Sessions";
+
+    if (selectedPlan === "boost") {
+        amount = 1999;
+        planHeader = "Career Boost Blueprint Plan";
+        planDesc = "Up to 60-Minute 1:1 Career Counseling Session";
+    }
     const { user } = useAuth();
     const [formData, setFormData] = useState({
         fullName: "",
@@ -56,14 +72,9 @@ const BookingPage: React.FC = () => {
     };
 
     const domains = [
-        "Software Engineering",
-        "MBA",
-        "App Development",
-        "Product Management",
-        "Creative Design / UX-UI",
-        "Human Resources",
-        "Data Science / AI-ML",
-        "Other",
+        "IT",
+        "Non IT",
+        "Others",
     ];
 
     return (
@@ -117,6 +128,46 @@ const BookingPage: React.FC = () => {
 
                         {!showPayment ? (
                             <form onSubmit={handleSubmit} className="space-y-8">
+                                {/* Plan Selector */}
+                                <div className="bg-card rounded-[2.5rem] p-4 md:p-6 border border-border-default shadow-lg flex flex-col md:flex-row gap-4">
+                                    <button
+                                        type="button"
+                                        onClick={() => setSelectedPlan("starter")}
+                                        className={`flex-1 flex items-center justify-between p-6 rounded-2xl border-2 transition-all ${selectedPlan === "starter"
+                                            ? "border-accent bg-accent/5 ring-4 ring-accent/5"
+                                            : "border-border-default hover:border-accent/30 bg-transparent"
+                                            }`}
+                                    >
+                                        <div className="text-left">
+                                            <p className={`text-xs uppercase font-black mb-1 ${selectedPlan === "starter" ? "text-accent" : "text-secondary"}`}>Recommended</p>
+                                            <h3 className="text-xl font-bold text-primary">Starter Plan</h3>
+                                            <p className="text-sm text-secondary font-medium">30-Min Session</p>
+                                        </div>
+                                        <div className="text-right">
+                                            <p className="text-2xl font-black text-primary">₹1,499</p>
+                                            {selectedPlan === "starter" && <Icon icon="ph:check-circle-fill" className="text-accent text-xl mt-1 ml-auto" />}
+                                        </div>
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        onClick={() => setSelectedPlan("boost")}
+                                        className={`flex-1 flex items-center justify-between p-6 rounded-2xl border-2 transition-all ${selectedPlan === "boost"
+                                            ? "border-accent bg-accent/5 ring-4 ring-accent/5"
+                                            : "border-border-default hover:border-accent/30 bg-transparent"
+                                            }`}
+                                    >
+                                        <div className="text-left">
+                                            <p className={`text-xs uppercase font-black mb-1 ${selectedPlan === "boost" ? "text-accent" : "text-secondary"}`}>Best Value</p>
+                                            <h3 className="text-xl font-bold text-primary">Boost Plan</h3>
+                                            <p className="text-sm text-secondary font-medium">60-Min Session</p>
+                                        </div>
+                                        <div className="text-right">
+                                            <p className="text-2xl font-black text-primary">₹1,999</p>
+                                            {selectedPlan === "boost" && <Icon icon="ph:check-circle-fill" className="text-accent text-xl mt-1 ml-auto" />}
+                                        </div>
+                                    </button>
+                                </div>
                                 <div className="bg-card rounded-[2.5rem] p-8 md:p-12 border border-border-default shadow-xl shadow-primary/5 transition-all">
                                     <h2 className="text-2xl font-bold text-primary mb-8 flex items-center gap-3">
                                         <Icon icon="ph:user-circle-bold" className="text-accent text-3xl" />
@@ -224,11 +275,11 @@ const BookingPage: React.FC = () => {
                                     <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl animate-pulse" />
                                     <div className="relative flex flex-col md:flex-row items-center justify-between gap-6">
                                         <div className="text-center md:text-left">
-                                            <h3 className="text-2xl font-black mb-2">1:1 Mentorship Session</h3>
-                                            <p className="text-white/80 font-medium">30–45 min intensive session with a verified expert mentor</p>
+                                            <h3 className="text-2xl font-black mb-2">{planHeader}</h3>
+                                            <p className="text-white/80 font-medium">{planDesc}</p>
                                         </div>
                                         <div className="text-center md:text-right shrink-0">
-                                            <div className="text-5xl font-black mb-1">₹{MENTORSHIP_AMOUNT}</div>
+                                            <div className="text-5xl font-black mb-1">₹{amount}</div>
                                             <p className="text-xs text-white/60 font-bold uppercase tracking-widest">Inclusive of all taxes</p>
                                         </div>
                                     </div>
@@ -262,14 +313,14 @@ const BookingPage: React.FC = () => {
                                     type="submit"
                                     className="w-full bg-accent text-white py-6 rounded-2xl font-black text-xl hover:bg-accent/90 transition-all active:scale-[0.98] shadow-2xl shadow-accent/30 flex items-center justify-center gap-3"
                                 >
-                                    Confirm & Pay ₹{MENTORSHIP_AMOUNT}
+                                    Confirm & Pay ₹{amount}
                                     <Icon icon="ph:arrow-right-bold" />
                                 </button>
                             </form>
                         ) : (
                             <div className="animate-modal-in">
                                 <RazorpayCheckout
-                                    amount={MENTORSHIP_AMOUNT}
+                                    amount={amount}
                                     bookingData={formData}
                                     onBack={() => setShowPayment(false)}
                                 />
@@ -279,6 +330,14 @@ const BookingPage: React.FC = () => {
                 </section>
             </main>
         </ProtectedRoute>
+    );
+};
+
+const BookingPage: React.FC = () => {
+    return (
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-background text-primary">Loading...</div>}>
+            <BookingPageContent />
+        </Suspense>
     );
 };
 

@@ -64,11 +64,7 @@ const Services = () => {
                 {item.description}
               </p>
 
-              <div className='mt-auto pt-6 w-full border-t border-border-default/50'>
-                <span className='text-accent text-sm font-bold uppercase tracking-wider group-hover:underline cursor-pointer'>
-                  Explore Domain →
-                </span>
-              </div>
+
             </div>
           ))}
         </div>

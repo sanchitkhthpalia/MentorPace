@@ -91,7 +91,25 @@ const RazorpayCheckout: React.FC<RazorpayCheckoutProps> = ({ amount, bookingData
                 },
                 handler: async (response: any) => {
                     try {
-                        // Save booking to Firestore
+                        setLoading(true);
+                        // 1. Verify on Backend
+                        const verifyRes = await fetch("/api/razorpay/verify", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({
+                                razorpay_order_id: response.razorpay_order_id,
+                                razorpay_payment_id: response.razorpay_payment_id,
+                                razorpay_signature: response.razorpay_signature,
+                                bookingData,
+                                amount,
+                            }),
+                        });
+
+                        if (!verifyRes.ok) {
+                            throw new Error("Payment verification failed");
+                        }
+
+                        // 2. Save booking to Firestore (now verified)
                         await addDoc(collection(db, "bookings"), {
                             userId: user?.uid || "",
                             fullName: bookingData.fullName,
@@ -109,12 +127,11 @@ const RazorpayCheckout: React.FC<RazorpayCheckoutProps> = ({ amount, bookingData
 
                         setTransactionId(response.razorpay_payment_id);
                         setPaymentSuccess(true);
-                    } catch (err) {
-                        console.error("Error saving booking:", err);
-                        setTransactionId(response.razorpay_payment_id);
-                        setPaymentSuccess(true);
-                        // Still show success even if Firestore save fails
-                        // The payment was collected - we can reconcile later
+                    } catch (err: any) {
+                        console.error("Error during verification/save:", err);
+                        setError(err.message || "Failed to finalize booking");
+                    } finally {
+                        setLoading(false);
                     }
                 },
                 modal: {

@@ -30,7 +30,7 @@ const Pricing = () => {
             </ul>
             <div className="pt-6">
               <Link
-                href="#contact"
+                href="/booking?plan=starter"
                 className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-accent text-white font-semibold hover:bg-accent/90 transition-colors duration-200"
               >
                 Get Started
@@ -57,7 +57,7 @@ const Pricing = () => {
             </ul>
             <div className="pt-6">
               <Link
-                href="#contact"
+                href="/booking?plan=boost"
                 className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-accent text-white font-semibold hover:bg-accent/90 transition-colors duration-200"
               >
                 Get Started
