@@ -4,8 +4,10 @@ import React, { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { Icon } from "@iconify/react";
 import Logo from "@/components/Layout/Header/Logo";
+import { validateEmail } from "@/utils/validation";
 
 interface SignUpModalProps {
+
     onClose: () => void;
     onSwitchToSignIn?: () => void;
 }
@@ -38,14 +40,22 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ onClose, onSwitchToSignIn }) 
             return;
         }
 
+        const emailValidation = validateEmail(email);
+        if (!emailValidation.isValid) {
+            setError(emailValidation.error || "Invalid email.");
+            return;
+        }
+
         setLoading(true);
         try {
+
             console.log("Calling signUpWithEmail...");
             await signUpWithEmail(email, password, name.trim());
             console.log("Sign up successful!");
             setSuccess(true);
-            setTimeout(() => onClose(), 1200);
+            setTimeout(() => onClose(), 4000); // Give them time to read the message
         } catch (err: any) {
+
             console.error("Sign up error caught in modal:", err);
             const code = err?.code || "";
             if (code === "auth/email-already-in-use") setError("An account with this email already exists.");
@@ -91,9 +101,10 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ onClose, onSwitchToSignIn }) 
 
                 {success && (
                     <div className="mb-6 p-4 bg-accent/10 border border-accent/20 rounded-2xl text-accent text-sm text-center font-bold animate-bounce-short">
-                        ✓ Account created successfully!
+                        ✓ Account created! Please check your email to verify your account before logging in.
                     </div>
                 )}
+
 
                 {error && (
                     <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800/50 rounded-2xl text-red-600 dark:text-red-400 text-sm text-center font-medium animate-shake">
